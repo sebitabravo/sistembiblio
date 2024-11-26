@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Listado de Movimientos{% endblock %}
+{% block content %}
+<h1>Listado de Movimientos</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Bodega Origen</th>
+            <th>Bodega Destino</th>
+            <th>Fecha</th>
+            <th>Usuario</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for movimiento in movimientos %}
+        <tr>
+            <td>{{ movimiento.bodega_origen.nombre }}</td>
+            <td>{{ movimiento.bodega_destino.nombre }}</td>
+            <td>{{ movimiento.fecha }}</td>
+            <td>{{ movimiento.usuario.username }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Eliminar Bodega{% endblock %}
+{% block content %}
+<h1>¿Estás seguro de eliminar esta bodega?</h1>
+<p><strong>{{ object.nombre }}</strong></p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a class="btn btn-secondary" href="{% url 'bodegas_list' %}">Cancelar</a>
+</form>
+{% endblock %}
