@@ -1,3 +1,7 @@
 .DS_Store
 Thumbs.db
 .python-version
+__pycache__/
+migration/
+venv/
+db.sqlite3

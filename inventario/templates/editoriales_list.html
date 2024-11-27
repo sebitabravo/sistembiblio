@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Editoriales</h1>
+<a href="{% url 'editoriales_create' %}" class="btn btn-primary">Nueva Editorial</a>
+<ul>
+    {% for editorial in editoriales %}
+    <li>
+        {{ editorial.nombre }}
+        <a href="{% url 'editoriales_update' editorial.id %}">Editar</a>
+        <a href="{% url 'editoriales_delete' editorial.id %}">Eliminar</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

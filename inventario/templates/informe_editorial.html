@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Informe por Editorial</h1>
+<form method="get">
+    <select name="editorial_id" class="form-control">
+        {% for editorial in editoriales %}
+        <option value="{{ editorial.id }}">{{ editorial.nombre }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit" class="btn btn-primary mt-2">Filtrar</button>
+</form>
+<ul>
+    {% for producto in productos %}
+    <li>{{ producto.titulo }} ({{ producto.tipo }})</li>
+    {% endfor %}
+</ul>
+{% endblock %}

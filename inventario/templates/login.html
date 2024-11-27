@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Iniciar Sesión{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Iniciar Sesión</h2>
+    <form method="post" id="login-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Ingresar</button>
+    </form>
+
+    {% if form.non_field_errors %}
+    <div class="alert alert-danger mt-2">
+        {{ form.non_field_errors }}
+    </div>
+    {% endif %}
+
+    <div class="mt-3">
+        <h4>Autocompletar:</h4>
+        <button type="button" class="btn btn-secondary" onclick="fillForm('bodeguero', 'bodeguero123')">Usuario Bodeguero</button>
+        <button type="button" class="btn btn-secondary" onclick="fillForm('jefe', 'jefe123')">Usuario Jefe</button>
+    </div>
+</div>
+
+<script>
+    function fillForm(username, password) {
+        // Busca los campos del formulario por nombre
+        document.querySelector("input[name='username']").value = username;
+        document.querySelector("input[name='password']").value = password;
+    }
+</script>
+{% endblock %}

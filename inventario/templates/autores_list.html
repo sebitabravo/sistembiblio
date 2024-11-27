@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Autores</h1>
+<a href="{% url 'autores_create' %}" class="btn btn-primary">Nuevo Autor</a>
+<ul>
+    {% for autor in autores %}
+    <li>
+        {{ autor.nombre }}
+        <a href="{% url 'autores_update' autor.id %}">Editar</a>
+        <a href="{% url 'autores_delete' autor.id %}">Eliminar</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

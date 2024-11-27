@@ -2,21 +2,29 @@
 {% block title %}Listado de Bodegas{% endblock %}
 {% block content %}
 <h1>Listado de Bodegas</h1>
-<a class="btn btn-primary mb-3" href="{% url 'bodegas_create' %}">Agregar Bodega</a>
+
+{% if user.is_authenticated and user.is_jefe_bodega %}
+    <a class="btn btn-primary mb-3" href="{% url 'bodegas_create' %}">Agregar Bodega</a>
+{% endif %}
+
 <table class="table table-striped">
     <thead>
         <tr>
             <th>Nombre</th>
+            {% if user.is_authenticated and user.is_jefe_bodega %}
             <th>Acciones</th>
+            {% endif %}
         </tr>
     </thead>
     <tbody>
         {% for bodega in bodegas %}
         <tr>
             <td>{{ bodega.nombre }}</td>
+            {% if user.is_authenticated and user.is_jefe_bodega %}
             <td>
                 <a class="btn btn-danger btn-sm" href="{% url 'bodegas_delete' bodega.id %}">Eliminar</a>
             </td>
+            {% endif %}
         </tr>
         {% endfor %}
     </tbody>

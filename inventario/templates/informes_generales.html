@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Informe General{% endblock %}
+
+{% block content %}
+<h1>Informe General</h1>
+
+<!-- Cantidad de Productos por Bodega -->
+<h2>Cantidad de Productos por Bodega</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Bodega</th>
+            <th>Cantidad de Productos</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for bodega in productos_por_bodega %}
+        <tr>
+            <td>{{ bodega.nombre }}</td>
+            <td>{{ bodega.cantidad }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+<!-- Tipos de Productos por Editorial -->
+<h2>Tipos de Productos por Editorial</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Editorial</th>
+            <th>Libros</th>
+            <th>Revistas</th>
+            <th>Enciclopedias</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in productos_por_editorial %}
+        <tr>
+            <td>{{ item.editorial }}</td>
+            <td>{{ item.libros }}</td>
+            <td>{{ item.revistas }}</td>
+            <td>{{ item.enciclopedias }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Movimientos Recientes -->
+<h2>Movimientos Recientes</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Bodega Origen</th>
+            <th>Bodega Destino</th>
+            <th>Usuario</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for movimiento in movimientos_recientes %}
+        <tr>
+            <td>{{ movimiento.fecha|date:"d/m/Y H:i" }}</td>
+            <td>{{ movimiento.bodega_origen.nombre }}</td>
+            <td>{{ movimiento.bodega_destino.nombre }}</td>
+            <td>{{ movimiento.usuario.username }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

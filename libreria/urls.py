@@ -16,8 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic.base import RedirectView
+from inventario.views import CustomLoginView
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('inventario.urls'))
+    path('login/', CustomLoginView.as_view(),
+         name='login'),  # Ruta para el login
+    path('logout/', LogoutView.as_view(), name='logout'),  # Ruta para el logout
+    path('', RedirectView.as_view(url='/login/', permanent=False),
+         name='home'),  # Redirige a login
+    path('', include('inventario.urls')),
 ]

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Informe de Movimientos{% endblock %}
+
+{% block content %}
+<h1>Informe de Movimientos</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Bodega Origen</th>
+            <th>Bodega Destino</th>
+            <th>Usuario</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for movimiento in movimientos %}
+        <tr>
+            <td>{{ movimiento.fecha }}</td>
+            <td>{{ movimiento.bodega_origen }}</td>
+            <td>{{ movimiento.bodega_destino }}</td>
+            <td>{{ movimiento.usuario }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

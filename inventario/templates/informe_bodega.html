@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Informe por Bodega</h1>
+<ul>
+    {% for bodega in bodegas %}
+    <li>{{ bodega.nombre }}: {{ bodega.productos_en_bodega.count }} productos</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -26,7 +26,12 @@ SECRET_KEY = 'django-insecure-3&r@8%2n%2bd^7#!-posp@ki3(#%l=0anfx7a2pov==k#4*%e7
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-AUTH_USER_MODEL = 'libreria.Usuario'
+AUTH_USER_MODEL = 'inventario.Usuario'
+LOGIN_URL = '/login/'  # URL del login
+LOGIN_REDIRECT_URL = '/'  # Dónde redirigir después de iniciar sesión
+LOGOUT_REDIRECT_URL = '/login/'  # Dónde redirigir después de cerrar sesión
+CSRF_FAILURE_VIEW = 'django.views.csrf.csrf_failure'
+
 
 # Application definition
 

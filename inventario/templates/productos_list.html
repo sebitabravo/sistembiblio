@@ -9,6 +9,7 @@
             <th>Tipo</th>
             <th>Título</th>
             <th>Editorial</th>
+            <th>Bodega</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -18,6 +19,13 @@
             <td>{{ producto.tipo }}</td>
             <td>{{ producto.titulo }}</td>
             <td>{{ producto.editorial.nombre }}</td>
+            <td>
+                {% if producto.bodega %}
+                    {{ producto.bodega.nombre }}
+                {% else %}
+                    Sin asignar
+                {% endif %}
+            </td>
             <td>
                 <a class="btn btn-warning btn-sm" href="{% url 'productos_update' producto.id %}">Editar</a>
                 <a class="btn btn-danger btn-sm" href="{% url 'productos_delete' producto.id %}">Eliminar</a>
