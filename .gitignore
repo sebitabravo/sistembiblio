@@ -4,4 +4,3 @@ Thumbs.db
 __pycache__/
 migration/
 venv/
-db.sqlite3
